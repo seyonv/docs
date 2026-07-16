@@ -1,7 +1,7 @@
 ---
-title: "The Four Fibonacci Tile Moves Explained"
+title: "The Four Fibonacci Tile Moves Explained in Detail"
 sidebarTitle: "Moves"
-description: "Learn Split, Merge, and Carry — the four value-preserving moves that let you reshape Fibonacci tiles without ever changing the board's total value."
+description: "Learn how Split, Merge, and their Carry edge cases reshape Fibonacci tiles without ever changing the board's total value — your foundation for every puzzle."
 ---
 
 Every move in Base Fibonacci Division rewrites a Fibonacci identity in-place. Whether you split a tile into two smaller neighbours or merge two tiles into a larger one, the board's total value never changes — you are simply expressing the same number a different way. There are four directional moves: **RIGHT** (split horizontally), **LEFT** (merge horizontally), **DOWN** (split vertically), and **UP** (merge vertically). At the edges of the board, a special **Carry** variant handles the case where two unit tiles combine using the `2·Fₙ` identity.
@@ -9,12 +9,15 @@ Every move in Base Fibonacci Division rewrites a Fibonacci identity in-place. Wh
 ## The Four Moves at a Glance
 
 | Move | Direction | What happens | Example |
-|------|-----------|--------------|---------|
-| **Split (horizontal)** | Drag **RIGHT** | One tile becomes its two smaller Fibonacci neighbours along the column axis | `5 → 3 + 2` |
-| **Merge (horizontal)** | Drag **LEFT** | Two consecutive column-neighbours fuse into the next Fibonacci number | `3 + 2 → 5` |
-| **Split (vertical)** | Drag **DOWN** | Same as split, but along the row axis | `5 → 3 + 2` |
-| **Merge (vertical)** | Drag **UP** | Same as merge, but along the row axis | `3 + 2 → 5` |
-| **Carry** | Drag LEFT at the last column, or drag UP at the bottom row | Two unit tiles combine using the `2·Fₙ = Fₙ₊₁ + Fₙ₋₂` identity | `1 + 1 → 2` |
+|------|-----------|--------------|---------| 
+| **Split (horizontal)** | Drag **RIGHT** | The tile splits into its two smaller Fibonacci neighbours to the right | `5 → 3 + 2` |
+| **Merge (horizontal)** | Drag **LEFT** | Two consecutive right-neighbours fuse into the next Fibonacci number | `3 + 2 → 5` |
+| **Split (vertical)** | Drag **DOWN** | The tile splits into its two smaller Fibonacci neighbours below | `5 → 3 + 2` |
+| **Merge (vertical)** | Drag **UP** | Two consecutive lower-neighbours fuse into the next Fibonacci number | `3 + 2 → 5` |
+
+### Carry (edge-case variant of Merge)
+
+When you drag **LEFT** from the last column, or drag **UP** from the bottom row, the normal merge has nowhere to land — instead, two unit tiles combine using the identity `2·Fₙ = Fₙ₊₁ + Fₙ₋₂`. In practice this looks like two `1` tiles collapsing into a single `2` tile one step to the left (or one step up). The game handles this automatically; you just drag in the usual merge direction.
 
 ## Value Invariance
 

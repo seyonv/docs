@@ -63,14 +63,14 @@ with a second Fibonacci identity:
 2·Fₙ = Fₙ₊₁ + Fₙ₋₂
 ```
 
-This identity holds for all Fibonacci numbers from `F₃ = 2` onward. A few checks:
+This identity holds for all Fibonacci numbers from `F₃ = 3` onward. A few checks:
 
 | n | `2·Fₙ` | `Fₙ₊₁ + Fₙ₋₂` | Equal? |
 |---|--------|----------------|--------|
-| 3 | 2 × 2 = 4  | 3 + 1 = 4   | ✓ |
-| 4 | 2 × 3 = 6  | 5 + 1 = 6   | ✓ |
-| 5 | 2 × 5 = 10 | 8 + 2 = 10  | ✓ |
-| 6 | 2 × 8 = 16 | 13 + 3 = 16 | ✓ |
+| 3 | 2 × 3 = 6  | 5 + 1 = 6   | ✓ |
+| 4 | 2 × 5 = 10 | 8 + 2 = 10  | ✓ |
+| 5 | 2 × 8 = 16 | 13 + 3 = 16 | ✓ |
+| 6 | 2 × 13 = 26 | 21 + 5 = 26 | ✓ |
 
 ### The Carry move
 
@@ -114,10 +114,10 @@ cell is empty, you have not just solved the puzzle — you have constructed an e
 proof, in Zeckendorf arithmetic, that the factorization is correct. No move could have
 secretly changed the sum, so the arrangement itself certifies the answer.
 
-This is also why the game's BFS solver is provably correct: it searches through all
+This is also why the game's built-in solver is provably correct: it searches through all
 reachable states (which all have the same total value) until it finds the one that matches
-the target mask. Every path it finds is a valid proof, and the shortest path gives you
-the optimal move count shown in the HUD.
+the target arrangement. Every path it finds is a valid proof, and the shortest path gives
+you the optimal move count shown in the HUD.
 
 <Tip>
   If you want to read the original academic context behind these identities and the
