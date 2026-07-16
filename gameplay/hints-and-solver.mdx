@@ -1,0 +1,45 @@
+---
+title: "Using Hints and the Auto-Solver"
+sidebarTitle: "Hints & Solver"
+description: "The Hint and Solve features use a BFS algorithm to find the shortest solution. Learn how to use them and what the optimal move count means."
+---
+
+Base Fibonacci Division includes a built-in breadth-first search (BFS) solver that runs behind the scenes from the moment a puzzle loads. It powers two player-facing tools — **Hint** and **Solve** — and also calculates the **optimal move count** displayed in your HUD so you always know what score to aim for.
+
+## Hint
+
+Press **H** or click the **Hint** button to highlight the single next move that keeps you on the shortest possible solution path. The hint marks the source tile and its destination cell so you can see exactly which tile to move and where to send it.
+
+The hint display stays lit for a few seconds, then fades automatically. You can dismiss it early by clicking any tile. Each press of **H** recalculates the hint from the current board state, so it stays accurate even after you have made several moves.
+
+## Solve
+
+Click the **Solve** button to hand control to the auto-solver. It plays back the complete optimal solution from the current board state, executing each move as an animation at a steady pace. You can watch the full sequence step by step to understand the strategy — especially useful when you want to learn *why* a particular move order is efficient.
+
+While auto-solve is running, Undo, Redo, Hint, and other inputs are disabled. The animation finishes naturally at the win screen.
+
+## Optimal Move Count
+
+The **OPTIMAL** chip in the top-right HUD shows the minimum number of moves needed to solve the puzzle from its starting position. This number is calculated by the BFS solver before you make your first move and stays fixed throughout the game — it reflects the puzzle's intrinsic difficulty, not your current progress.
+
+Your running **MOVES** counter tracks how many moves you have actually made. Try to finish with `MOVES = OPTIMAL` for a perfect solve. If you have already achieved a personal best on this puzzle, the **BEST** chip shows it in green.
+
+## Undo / Redo / Reset
+
+Every move you make — including moves suggested by hints — is recorded in your history.
+
+| Action | How to trigger | What it does |
+|--------|----------------|--------------|
+| **Undo** | Press `U` or click **Undo** | Steps back one move |
+| **Redo** | Press `R` or click **Redo** | Steps forward after an undo |
+| **Reset** | Click **Reset** | Returns the board to its starting state without clearing your move history |
+
+Reset is handy when you want to try a completely different approach from scratch without starting a brand-new puzzle.
+
+<Note>
+  The solver explores up to **300,000 board states** during its BFS search. For very large Hard-mode grids this limit can occasionally be reached before a solution is found, in which case Hint and Solve will return no result. If this happens, try clicking **New** to generate a fresh puzzle.
+</Note>
+
+<Tip>
+  Use Hint sparingly to keep the puzzle challenging. Try to figure out the next move yourself first, then confirm with **H** only if you are genuinely stuck — your brain will thank you later.
+</Tip>

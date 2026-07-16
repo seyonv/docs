@@ -1,0 +1,41 @@
+---
+title: "The Four Fibonacci Tile Moves Explained"
+sidebarTitle: "Moves"
+description: "Learn Split, Merge, and Carry — the four value-preserving moves that let you reshape Fibonacci tiles without ever changing the board's total value."
+---
+
+Every move in Base Fibonacci Division rewrites a Fibonacci identity in-place. Whether you split a tile into two smaller neighbours or merge two tiles into a larger one, the board's total value never changes — you are simply expressing the same number a different way. There are four directional moves: **RIGHT** (split horizontally), **LEFT** (merge horizontally), **DOWN** (split vertically), and **UP** (merge vertically). At the edges of the board, a special **Carry** variant handles the case where two unit tiles combine using the `2·Fₙ` identity.
+
+## The Four Moves at a Glance
+
+| Move | Direction | What happens | Example |
+|------|-----------|--------------|---------|
+| **Split (horizontal)** | Drag **RIGHT** | One tile becomes its two smaller Fibonacci neighbours along the column axis | `5 → 3 + 2` |
+| **Merge (horizontal)** | Drag **LEFT** | Two consecutive column-neighbours fuse into the next Fibonacci number | `3 + 2 → 5` |
+| **Split (vertical)** | Drag **DOWN** | Same as split, but along the row axis | `5 → 3 + 2` |
+| **Merge (vertical)** | Drag **UP** | Same as merge, but along the row axis | `3 + 2 → 5` |
+| **Carry** | Drag LEFT at the last column, or drag UP at the bottom row | Two unit tiles combine using the `2·Fₙ = Fₙ₊₁ + Fₙ₋₂` identity | `1 + 1 → 2` |
+
+## Value Invariance
+
+The board is a 2-D grid whose rows and columns are labelled with Fibonacci numbers. A tile sitting in the cell at row-label **Fᵣ** and column-label **F𝒸** is worth **Fᵣ × F𝒸**.
+
+Every split and merge applies one of two identities:
+
+- **Fibonacci recurrence:** `Fₙ = Fₙ₋₁ + Fₙ₋₂`
+- **Carry identity:** `2·Fₙ = Fₙ₊₁ + Fₙ₋₂`
+
+Because both identities are equalities, the board's grand total is preserved after every single move. This means you can freely explore without fear of "breaking" the puzzle — the tiles always encode the same number, just in a different shape.
+
+## Valid Moves
+
+When you click a tile, the game immediately calculates every destination it can legally reach and highlights those cells with a **mint-green ring**. You can then either:
+
+- **Drag** the tile directly onto a highlighted cell, or
+- **Click** any highlighted cell to move the selected tile there.
+
+A tile that shows no highlights has no legal moves in its current neighbourhood — it is already at maximum compression in every direction from where it sits. Try splitting a neighbouring tile first to open up new possibilities.
+
+<Tip>
+  If no cells light up after you click a tile, that tile has no legal moves from its current position. Try clicking a different tile, or press **H** to let the Hint system show you a productive next step.
+</Tip>

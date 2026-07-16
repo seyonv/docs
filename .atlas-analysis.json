@@ -1,0 +1,50 @@
+{
+  "projectType": "general",
+  "projectName": "Base Fibonacci Division",
+  "projectDescription": "A puzzle game where you factor numbers by sliding Fibonacci tiles through Zeckendorf identities — playable on desktop and in the browser.",
+  "theme": "almond",
+  "primaryColor": "#1b5899",
+  "lightColor": "#6b6b6b",
+  "darkColor": "#c7c8ca",
+  "navigation": {
+    "groups": [
+      {
+        "group": "Overview",
+        "pages": ["introduction", "how-to-play"]
+      },
+      {
+        "group": "Gameplay",
+        "pages": ["gameplay/moves", "gameplay/controls", "gameplay/difficulty", "gameplay/hints-and-solver"]
+      },
+      {
+        "group": "Getting Started",
+        "pages": ["getting-started/desktop", "getting-started/browser"]
+      },
+      {
+        "group": "The Math",
+        "pages": ["math/zeckendorf", "math/fibonacci-identities"]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Zeckendorf (base-Fibonacci) tile-based division puzzles",
+    "Four value-preserving moves: Split, Merge, Carry (horizontal and vertical)",
+    "BFS-powered Hint button and animated Solve playback",
+    "Optimal move count shown for every puzzle",
+    "Undo / Redo / Reset — every move is reversible",
+    "Valid-move highlighting on tile selection",
+    "Three difficulty levels (Easy / Medium / Hard)",
+    "Sound effects with mute toggle",
+    "Runs on desktop (Python/pygame) and in the browser (pygbag/WebAssembly)",
+    "Confetti win screen with stats overlay",
+    "Collapsible move log and live HUD (moves / time / best)"
+  ],
+  "publicApiSurface": [
+    "python main.py — launch the desktop game",
+    "pygbag main.py — serve the browser build locally",
+    "pygbag --build main.py — produce a static web bundle in build/web/",
+    "Difficulty levels: Easy (factors 2–5), Medium (4–8), Hard (6–13)",
+    "Keyboard: U (Undo), R (Redo), H (Hint), N (New puzzle), Esc (Menu)",
+    "Button bar: Undo · Redo · Reset · Hint · Solve · New · Sound · Log · Menu"
+  ]
+}

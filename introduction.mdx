@@ -1,0 +1,46 @@
+---
+title: "Base Fibonacci Division: Factor Numbers as a Puzzle"
+sidebarTitle: "Introduction"
+description: "Base Fibonacci Division is a Zeckendorf tile puzzle where every board state is a division problem. Factor numbers by sliding tiles on a grid."
+---
+
+Every puzzle in Base Fibonacci Division is a division problem in disguise. The game picks two factors and hides their product **N = divisor × quotient** across a two-dimensional grid as Fibonacci (Zeckendorf) tiles. Your job is to slide those tiles into the correct target arrangement — and when you do, you've proven the factorization.
+
+## What Is the Game?
+
+When a new puzzle starts, **N** is placed across the bottom row as a set of [Zeckendorf](https://en.wikipedia.org/wiki/Zeckendorf%27s_theorem) tiles — a unique representation of any positive integer as a sum of non-consecutive Fibonacci numbers. Scattered across the board you'll also see **glowing gold target slots** that outline exactly where tiles need to land.
+
+Your goal is to slide and reshape the tiles until every gold slot holds exactly one tile and nothing is left over. Because each move rewrites a Fibonacci identity without changing the total value on the board, that final arrangement is a valid mathematical proof that **N = divisor × quotient**. No calculator required — the puzzle's solution _is_ the factorization.
+
+## Key Features
+
+<CardGroup cols={2}>
+  <Card title="Four Value-Preserving Moves" icon="arrows-up-down-left-right">
+    Split, merge, and carry moves rewrite Fibonacci identities so the board's total value never changes — every legal move is a valid algebraic step.
+  </Card>
+  <Card title="Smart Hints & Solver" icon="lightbulb">
+    An optimal BFS solver powers the **Hint** button (one move at a time) and a full animated **Solve** playback, and always shows you the optimal move count to beat.
+  </Card>
+  <Card title="Undo / Redo / Reset" icon="rotate-left">
+    Every move is reversible. Step backwards, replay forward, or wipe the board and start the same puzzle fresh — experiment without consequence.
+  </Card>
+  <Card title="Desktop & Browser Play" icon="globe">
+    Built with pygame, the game runs natively on Python 3.9+ and compiles to WebAssembly via pygbag — the same codebase works in any modern browser with no install.
+  </Card>
+  <Card title="Three Difficulty Levels" icon="chart-bar">
+    Easy keeps factors between 2 and 5, Medium between 4 and 8, and Hard between 6 and 13 — so the grid size and number of moves scale naturally with your skill.
+  </Card>
+  <Card title="Confetti Win Screen" icon="star">
+    Filling every gold slot triggers a confetti celebration with a full stats overlay showing your move count, time elapsed, and the optimal move count.
+  </Card>
+</CardGroup>
+
+## How It Fits Together
+
+The grid's rows and columns are each labelled with Fibonacci numbers. A tile sitting at row-label **Fᵣ** and column-label **F꜀** is worth **Fᵣ · F꜀**. The bottom row (row-label 1) seeds **N** directly from its Zeckendorf digits, and the gold target slots are the outer product of the divisor's and quotient's Zeckendorf representations — together they sum to exactly **N**.
+
+Every tile move applies one of the two core Fibonacci identities: the recurrence **Fₙ = Fₙ₋₁ + Fₙ₋₂** (split/merge) or the doubling identity **2·Fₙ = Fₙ₊₁ + Fₙ₋₂** (carry). Because each rewrite is an equality, the board's total value is invariant throughout the puzzle. Reaching the target arrangement is therefore not just a win condition — it's a constructive proof of the factorization.
+
+<Note>
+  Ready to start sliding tiles? Head to [How to Play](/how-to-play) for a step-by-step walkthrough of the gameplay loop, the board layout, and every control you'll need.
+</Note>

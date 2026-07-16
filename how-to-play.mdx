@@ -1,0 +1,51 @@
+---
+title: "How to Play Base Fibonacci Division"
+sidebarTitle: "How to Play"
+description: "Learn the five-step gameplay loop: pick a difficulty, click a tile, drag it to a highlighted cell, fill all gold slots, and win with the fewest moves."
+---
+
+Your goal is straightforward: fill every gold target slot on the board with exactly one tile. You get there by sliding tiles through Fibonacci moves — each move legally rewrites a Fibonacci identity, so the board's total value never changes and every step you take is mathematically sound.
+
+## The Gameplay Loop
+
+<Steps>
+  <Step title="Pick a Difficulty">
+    On the title screen, choose **Easy**, **Medium**, or **Hard**. Difficulty controls how large the two hidden factors can be — Easy keeps them between 2 and 5, Medium between 4 and 8, and Hard between 6 and 13. Larger factors mean a bigger grid and more moves to reach the solution.
+  </Step>
+  <Step title="Click a Tile">
+    Click any tile on the board to select it. Its legal destination cells immediately light up with a **mint green ring** so you can see exactly where it is allowed to move before you commit.
+  </Step>
+  <Step title="Drag to a Highlighted Cell">
+    Drag the selected tile onto one of the mint-highlighted neighbours. Depending on the direction, the tile will **split** into its two smaller Fibonacci components or **merge** with an adjacent tile into a single larger one. Either way, the board's total value stays identical — you are only rewriting a Fibonacci identity.
+  </Step>
+  <Step title="Fill the Gold Slots">
+    Continue moving tiles until each gold target slot holds exactly one tile. As you place tiles correctly, they turn **green** to confirm they are in the right position. Tiles that overfill a target turn **orange** — a signal to adjust.
+  </Step>
+  <Step title="Win!">
+    The moment every gold slot is filled and no tiles remain outside those slots, the confetti celebration fires. A stats overlay shows your **total move count**, **time elapsed**, and the **optimal move count** — the fewest possible moves to solve that specific puzzle.
+  </Step>
+</Steps>
+
+## Reading the Board
+
+| Visual cue | What it means |
+|---|---|
+| Tiles in the **bottom row** | The starting position — **N** expressed in Zeckendorf (base-Fibonacci) form |
+| **Gold dashed outline** (empty cell) | A target slot that still needs a tile |
+| **Mint green ring** around a cell | A valid destination for the currently selected tile |
+| **Green tile** | Correctly placed — this tile is already in a target slot |
+| **Orange tile** | A target slot that holds more than one tile (overfilled) |
+
+The grid's rows and columns are labelled with Fibonacci numbers that increase toward the top-left. A tile's value is the product of its row label and column label, which is why the same tile "means" something different depending on where it sits.
+
+## Winning Conditions
+
+The puzzle is solved when **every** gold target slot holds exactly one tile **and** every non-target cell is empty. Both conditions must be true simultaneously — a tile parked outside the target area counts as unsolved even if all the gold slots are filled.
+
+<Tip>
+  Press **H** or tap the **Hint** button at any time to highlight the next optimal move. The hint system uses a full BFS solver, so it always points you toward the shortest possible path to the solution.
+</Tip>
+
+<Note>
+  Every move can be undone. Press **U** to step backwards, **R** to redo, or hit **Reset** to restore the original starting state of the current puzzle. Try moves freely — there is no penalty for exploring dead ends.
+</Note>

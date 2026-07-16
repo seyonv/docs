@@ -1,0 +1,68 @@
+---
+title: "Play Base Fibonacci Division in the Browser"
+sidebarTitle: "Browser"
+description: "Build and run Base Fibonacci Division in any modern browser using pygbag and WebAssembly. No installation required for players — just share a URL."
+---
+
+Base Fibonacci Division compiles to WebAssembly with [pygbag](https://github.com/pygame-web/pygbag), so players can enjoy it in any modern browser with zero installation. This page explains how to run the local dev server and build a deployable static bundle.
+
+<Info>
+  **Prerequisites**
+  - Python 3.9 or newer
+  - The game repository cloned locally — see [Desktop setup](/getting-started/desktop) for instructions
+  - `pygbag` installed (covered in the next step)
+</Info>
+
+## Install pygbag
+
+```bash
+pip install pygbag
+```
+
+## Run the Local Dev Server
+
+<Steps>
+  <Step title="Start the dev server">
+    From the project root, run:
+
+    ```bash
+    pygbag main.py
+    ```
+  </Step>
+
+  <Step title="Open the game in your browser">
+    Open the URL printed in the terminal — usually [http://localhost:8000](http://localhost:8000).
+  </Step>
+
+  <Step title="Play">
+    The game loads directly in the browser tab. No installation is needed for anyone you share the link with when hosting remotely.
+  </Step>
+</Steps>
+
+## Build a Static Bundle for Hosting
+
+<Steps>
+  <Step title="Build the bundle">
+    ```bash
+    pygbag --build main.py
+    ```
+
+    pygbag compiles the game and outputs a self-contained static site to `build/web/`.
+  </Step>
+
+  <Step title="Upload to a static host">
+    Upload the contents of `build/web/` to any static hosting provider — GitHub Pages, Netlify, Vercel, Cloudflare Pages, and others all work out of the box.
+  </Step>
+
+  <Step title="Share the URL">
+    Send visitors your URL — they play directly in the browser with no downloads or plugins required.
+  </Step>
+</Steps>
+
+<Note>
+  Sound effects use `.ogg` files for reliable web playback across browsers. If the browser audio context is unavailable (for example, due to autoplay restrictions), the game falls back gracefully and continues without sound.
+</Note>
+
+<Tip>
+  GitHub Pages is free and works perfectly for hosting the static bundle. Push the contents of `build/web/` to a `gh-pages` branch in your repository and enable Pages in the repo settings — your game will be live at `https://<your-username>.github.io/<repo-name>/`.
+</Tip>

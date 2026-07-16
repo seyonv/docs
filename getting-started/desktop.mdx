@@ -1,0 +1,72 @@
+---
+title: "Install and Run Base Fibonacci Division on Desktop"
+sidebarTitle: "Desktop"
+description: "Install Base Fibonacci Division on Windows, macOS, or Linux. Requires Python 3.9+ and pygame. Get playing in under two minutes."
+---
+
+Base Fibonacci Division runs natively on Windows, macOS, and Linux using Python 3.9+ and pygame. This page walks you through cloning the project and launching the game.
+
+<Info>
+  **Prerequisites**
+  - Python 3.9 or newer — [python.org/downloads](https://www.python.org/downloads/)
+  - `pip` (bundled with Python 3.4+)
+  - `git` — [git-scm.com](https://git-scm.com/) — or download the repository ZIP directly from GitHub
+</Info>
+
+## Installation
+
+<Steps>
+  <Step title="Clone the repository">
+    ```bash
+    git clone https://github.com/KerimovEmil/BaseFibonacciDivisionGame.git
+    cd BaseFibonacciDivisionGame
+    ```
+  </Step>
+
+  <Step title="Create a virtual environment">
+    <CodeGroup>
+      ```bash macOS / Linux
+      python -m venv .venv
+      source .venv/bin/activate
+      ```
+
+      ```bash Windows
+      python -m venv .venv
+      .venv\Scripts\activate
+      ```
+    </CodeGroup>
+  </Step>
+
+  <Step title="Install dependencies">
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+    This installs `pygame>=2.5`, the only runtime dependency.
+  </Step>
+
+  <Step title="Launch the game">
+    ```bash
+    python main.py
+    ```
+  </Step>
+</Steps>
+
+## Alternative: conda
+
+<Accordion title="Prefer conda?">
+  ```bash
+  conda create --name fibgame python=3.10 -y
+  conda activate fibgame
+  pip install -r requirements.txt
+  python main.py
+  ```
+</Accordion>
+
+## What to Expect
+
+A 1000×720 window opens displaying the title screen. Choose a difficulty — **Easy**, **Medium**, or **Hard** — and click **Play** to start your first puzzle. Correctly-placed tiles glow green; gold slots mark where tiles still need to go.
+
+<Tip>
+  On first run, pygame may take a moment to initialize audio. This is normal — the game will start momentarily once the audio subsystem is ready.
+</Tip>

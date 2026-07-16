@@ -1,0 +1,44 @@
+---
+title: "Choosing a Difficulty Level in Base Fibonacci Division"
+sidebarTitle: "Difficulty"
+description: "Compare Easy, Medium, and Hard difficulty modes. Each level sets the range of factors used, controlling board size and the number of moves needed."
+---
+
+Difficulty in Base Fibonacci Division controls the range of random factors the game picks when it generates a new puzzle. Those factors determine how large the dividend **N** is, which in turn determines how many Fibonacci tiles appear on the board and how spread-out the target slots are. A higher difficulty means a bigger number, a larger grid, and a longer road to the solution.
+
+## Difficulty Levels Compared
+
+| Level | Factor range | Typical grid size | Good for |
+|-------|-------------|-------------------|----------|
+| **Easy** | 2 – 5 | Small (≤ 4 × 4) | Newcomers learning the four moves |
+| **Medium** *(default)* | 4 – 8 | Medium | Balanced challenge once you know the basics |
+| **Hard** | 6 – 13 | Larger (6 × 6+) | Experienced players seeking a deeper puzzle |
+
+## How Difficulty Affects Gameplay
+
+Each factor is represented on the board as its [Zeckendorf (base-Fibonacci) decomposition](https://en.wikipedia.org/wiki/Zeckendorf%27s_theorem). Larger factors have longer Zeckendorf representations, which means:
+
+- **More tiles** are placed on the board at the start.
+- **More legal moves** are available at any given moment, creating a wider search space.
+- **More steps** are needed to reach the target arrangement, so the optimal move count grows significantly.
+- The BFS solver works harder and may occasionally time out on the most complex Hard boards.
+
+On Easy, puzzles typically resolve in just a handful of moves. On Hard, even the optimal solution can require a dozen or more carefully chosen steps.
+
+## Changing Difficulty
+
+<Steps>
+  <Step title="Return to the title screen">
+    Press **Esc** or click the **Menu** button in the bottom button bar to go back to the main menu.
+  </Step>
+  <Step title="Select a difficulty">
+    Click the **Easy**, **Medium**, or **Hard** button on the title screen.
+  </Step>
+  <Step title="Start a new puzzle">
+    Click **Play** to generate a fresh puzzle at your chosen difficulty level.
+  </Step>
+</Steps>
+
+<Tip>
+  Start on **Easy** to build an intuition for the four moves and how tiles relate to each other. Move up to **Medium** once you can complete a puzzle without reaching for the Hint button.
+</Tip>

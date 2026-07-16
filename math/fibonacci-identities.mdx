@@ -1,0 +1,127 @@
+---
+title: "Fibonacci Identities: Why Every Move Preserves Value"
+sidebarTitle: "Fibonacci Identities"
+description: "The four game moves are exact applications of Fibonacci identities. Understand why sliding tiles never changes the total value of the board."
+---
+
+Every move in Base Fibonacci Division is a direct application of a Fibonacci identity.
+Because these identities are exact mathematical equalities — not approximations, not
+shortcuts — the board's total value can never change no matter how many moves you make.
+That means reaching the target arrangement is not just a puzzle win: it is a valid
+mathematical proof that `N = divisor × quotient`.
+
+## The Core Identity: Split and Merge
+
+The fundamental Fibonacci recurrence is:
+
+```
+Fₙ = Fₙ₋₁ + Fₙ₋₂
+```
+
+This one equation gives you two of the four moves. On the board, every row and every
+column is labelled with consecutive Fibonacci numbers, so any two neighbours always
+satisfy this relationship.
+
+### Split (RIGHT or DOWN)
+
+Drag a tile **right** or **down** to split it into its two smaller neighbours.
+
+```
+One tile of value Fₙ  →  one tile of value Fₙ₋₁  +  one tile of value Fₙ₋₂
+```
+
+Concrete example: a tile on the `5`-column splits right into a `3`-tile and a `2`-tile.
+Check: `5 = 3 + 2` ✓
+
+Because `Fₙ = Fₙ₋₁ + Fₙ₋₂`, the total value is unchanged.
+
+### Merge (LEFT or UP)
+
+Drag a tile **left** or **up** to fuse it with its adjacent smaller neighbour into one
+larger tile. This is the split identity read in reverse.
+
+```
+One tile Fₙ₋₁  +  one tile Fₙ₋₂  →  one tile Fₙ
+```
+
+Concrete example: a `3`-tile and a `2`-tile that are adjacent merge left/up into a
+single `5`-tile. Check: `3 + 2 = 5` ✓
+
+<Note>
+  Merge requires that **both** tiles are already present and adjacent. If the
+  neighbouring cell is empty, the move is not legal — the game highlights only
+  valid destinations so you never have to guess.
+</Note>
+
+## The Carry Identity
+
+At the edges of the grid — the rightmost column and the bottom row — the standard
+split/merge would step outside the board boundary. The game handles these edge cases
+with a second Fibonacci identity:
+
+```
+2·Fₙ = Fₙ₊₁ + Fₙ₋₂
+```
+
+This identity holds for all Fibonacci numbers from `F₃ = 2` onward. A few checks:
+
+| n | `2·Fₙ` | `Fₙ₊₁ + Fₙ₋₂` | Equal? |
+|---|--------|----------------|--------|
+| 3 | 2 × 2 = 4  | 3 + 1 = 4   | ✓ |
+| 4 | 2 × 3 = 6  | 5 + 1 = 6   | ✓ |
+| 5 | 2 × 5 = 10 | 8 + 2 = 10  | ✓ |
+| 6 | 2 × 8 = 16 | 13 + 3 = 16 | ✓ |
+
+### The Carry move
+
+When two unit tiles (`F₁ = 1`) sit in the same boundary cell, they carry:
+
+```
+Two tiles of value 1  →  one tile of value 2
+```
+
+That value-2 tile can then continue merging upward or leftward using the standard
+recurrence. This is the game's way of keeping computations inside the grid while still
+applying a valid Fibonacci identity — total value remains unchanged.
+
+## Value Invariance: An Informal Proof
+
+Here is the core argument in plain language:
+
+1. Every tile on the board occupies a cell at some row-label `Fᵣ` and column-label
+   `F𝒸`. That tile contributes `Fᵣ × F𝒸` to the board's total value.
+
+2. A Split move removes one tile of value `Fₙ × Fₘ` (in one dimension) and adds
+   back tiles whose combined value is `(Fₙ₋₁ + Fₙ₋₂) × Fₘ = Fₙ × Fₘ`. Net change: zero.
+
+3. A Merge move is the same arithmetic reversed. Net change: zero.
+
+4. A Carry move removes two tiles summing to `2 × Fₙ × Fₘ` and adds back tiles
+   summing to `(Fₙ₊₁ + Fₙ₋₂) × Fₘ = 2 × Fₙ × Fₘ`. Net change: zero.
+
+Because every single legal move has a net change of zero, **any sequence of legal moves
+leaves the board's total value exactly the same**. The starting total equals the
+dividend N. The target total equals divisor × quotient, which also equals N (by
+construction — see [Zeckendorf's Theorem](/math/zeckendorf)). The two configurations are
+mathematically equivalent; the puzzle is finding the path between them.
+
+## Why This Matters for the Puzzle
+
+The value-invariance property has a satisfying consequence: **the game cannot lie to you**.
+
+If you reach a board state where all the gold slots hold exactly one tile and every other
+cell is empty, you have not just solved the puzzle — you have constructed an explicit
+proof, in Zeckendorf arithmetic, that the factorization is correct. No move could have
+secretly changed the sum, so the arrangement itself certifies the answer.
+
+This is also why the game's BFS solver is provably correct: it searches through all
+reachable states (which all have the same total value) until it finds the one that matches
+the target mask. Every path it finds is a valid proof, and the shortest path gives you
+the optimal move count shown in the HUD.
+
+<Tip>
+  If you want to read the original academic context behind these identities and the
+  game's design, see the paper **"Zeckendorf representations and the MOVES game"**
+  ([PDF](http://educ.jmu.edu/~lucassk/Papers/MOVES%20paper%20revised.pdf)), linked from
+  the project's GitHub README.
+</Tip>
